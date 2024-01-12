@@ -1,4 +1,5 @@
-﻿using LethalAPI.LibTerminal.Attributes;
+﻿using GameNetcodeStuff;
+using LethalAPI.LibTerminal.Attributes;
 using LethalAPI.LibTerminal.Helpers;
 using System;
 using System.Linq;
@@ -83,6 +84,12 @@ namespace LethalAPI.LibTerminal.Commands
             if (StartOfRound.Instance.shipHasLanded)
                 return MiscHelper.Buffer("You're already on the ground, dummy!");
 
+            var canStartGame = CanStartGame();
+            if (!string.IsNullOrEmpty(canStartGame))
+            {
+                return MiscHelper.Buffer(canStartGame);
+            }
+
             Console.WriteLine("Landing");
             InteractTrigger trigger = GameObject.Find("StartGameLever").GetComponentInChildren<InteractTrigger>();
             var lever = UnityEngine.Object.FindObjectOfType<StartMatchLever>();
@@ -91,6 +98,21 @@ namespace LethalAPI.LibTerminal.Commands
             lever.PlayLeverPullEffectsServerRpc(true);
 
             return MiscHelper.Buffer("Landing the ship...");
+        }
+
+        private string CanStartGame()
+        {
+            var player = UnityEngine.Object.FindObjectsOfType<GameNetworkManager>().FirstOrDefault(x => x.localPlayerController != null);
+
+            if (player.gameHasStarted)
+            {
+                return null;
+            }
+            else if (player.isHostingGame)
+            {
+                return null;
+            }
+            return "The host must be the one to start the game!";
         }
 
         private string CanUseDoor()

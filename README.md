@@ -1,37 +1,8 @@
-# LethalAPI.Terminal
-Terminal Commands API for the Lethal Company Modding API
+# Terminal Tools
 
-# Entity Commands
+A Lethal Company mod to make the ship's terminal a bit more useful. Allows manipulating the ship's doors, lights, and teleporters, allows you to launch or land the ship, and provides status information about crewmember health and the current time.
 
-This section details the commands related to entities such as landmines and turrets within the game.
-
-## Commands
-
-### ListMines
-- **Description**: Lists all landmines within the game.
-- **Usage**: `ListMines`
-- **Details**: Scans for landmines and returns their object codes.
-
-### ListTurrets
-- **Description**: Lists all turrets.
-- **Usage**: `ListTurrets`
-- **Details**: Scans for turrets and returns their object codes.
-
-### Detonate
-- **Description**: Detonates designated landmine(s).
-- **Usage**: `Detonate [All / Mine Id]`
-- **Details**: Users can specify a particular mine by its ID or use "All" to detonate all mines. Checks if the specified landmine has already exploded and returns the status.
-
-### Berserk
-- **Description**: Makes designated turret(s) go berserk.
-- **Usage**: `Berserk [All / Turret Id]`
-- **Details**: Targets a specific turret by its ID or use "All" to affect every turret. Toggles the turret's mode between normal and berserk, providing feedback on the action taken.
-
-# Equipment Commands
-
-This section details the commands related to equipment, specifically focusing on the functionalities around the teleporter in the game.
-
-## Commands
+## Equipment Commands
 
 ### Teleport
 - **Description**: Teleport the specified member of the crew.
@@ -53,42 +24,17 @@ This section details the commands related to equipment, specifically focusing on
 - **Usage**: `Scramble`
 - **Details**: Performs a reset of the inverse teleporter's cooldown and then immediately initiates inverse teleportation.
 
-# Info Commands
-
-This section details the commands that provide information about various aspects of the game environment, such as time and crew member status.
-
-## Commands
-
-### Time
-- **Description**: Tells the current time.
-- **Usage**: `Time`
-- **Details**: Provides the current time.
-
-### Status
-- **Description**: Get the status of crew members.
-- **Usage**: `Status [Player name]`
-- **Details**: Displays the status of the designated crew member. If none is specified, lists the status of all crew members.
-
-### Clear
-- **Description**: Clears the console.
-- **Usage**: `Clear`
-- **Details**: Clears all text from the console, providing a clean slate for new commands and responses.
-
-# Ship Commands
-
-This section details the commands related to ship operations, such as managing lights, doors, and the ship's landing status.
-
-## Commands
+## Ship Commands
 
 ### Lights
 - **Description**: Toggle the lights on or off.
 - **Usage**: `Lights`
-- **Details**: Interacts with the game object named "LightSwitch" to toggle the state of the lights.
+- **Details**: Turn the lights on or off. Useful for when one of your crewmates is a joker with a remote.
 
 ### Door
 - **Description**: Toggle the door's open or close state.
 - **Usage**: `Door`, `Doors`
-- **Details**: Determines the current state of the door and sends a command to either open or close it.
+- **Details**: Determines the current state of the ship's door and opens or closes it.
 
 ### Close
 - **Description**: Close the door.
@@ -101,7 +47,7 @@ This section details the commands related to ship operations, such as managing l
 - **Details**: Opens the ship's door and provides current door power.
 
 ### Launch
-- **Description**: Activate an emergency exit from the current situation.
+- **Description**: Launches the ship.
 - **Usage**: `Launch`, `GTFO`
 - **Details**: Launches the ship.
 
@@ -109,6 +55,60 @@ This section details the commands related to ship operations, such as managing l
 - **Description**: Land the ship.
 - **Usage**: `Land`
 - **Details**: Lands the ship.
+
+## Info Commands
+
+### Time
+- **Description**: Tells the current time.
+- **Usage**: `Time`
+- **Details**: Provides the current time.
+
+### Status
+- **Description**: Get the status of crew members.
+- **Usage**: `Status [Player name]`
+- **Details**: Displays the status (health / cause of death) of the designated crew member. If none is specified, lists the status of all crew members.
+
+### Clear
+- **Description**: Clears the console.
+- **Usage**: `Clear`
+- **Details**: Clears all text from the console, providing a clean slate for new commands and responses.
+
+## Entity Commands
+
+### ListMines
+- **Description**: Lists all landmines.
+- **Usage**: `ListMines`
+- **Details**: Scans for landmines and returns their object codes.
+
+### ListTurrets
+- **Description**: Lists all turrets.
+- **Usage**: `ListTurrets`
+- **Details**: Scans for turrets and returns their object codes.
+
+### ListDoors
+- **Description**: Lists all doors.
+- **Usage**: `ListDoors`
+- **Details**: Scans for doors and returns their object codes.
+
+### Detonate
+- **Description**: Detonates designated landmine(s).
+- **Usage**: `Detonate [All / Mine Id]`
+- **Details**: Detonate a mine by its code, or detonate all mines with "all".
+
+### Berserk
+- **Description**: Makes designated turret(s) go berserk.
+- **Usage**: `Berserk [All / Turret Id]`
+- **Details**: Make the selected turret fire uncontrollably, or use "all" for absolute mayhem.
+
+## Other Commands
+
+There are a few commands that aren't listed here. They're mostly used for debugging and testing, but I don't want to encourage their use. If you happen to find out what they are from the source code, though, I can't stop you from using them.
+
+Happy hunting ;)
+
+## Changes
+
+Refer to the [Changelog](https://github.com/Nasawa/LethalAPI.Terminal/blob/development/CHANGELOG.md).
 
 ## Attribution
 
